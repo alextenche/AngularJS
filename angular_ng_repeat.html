@@ -20,15 +20,27 @@
 			}
 		</style>
 		
+		<div>
+			<input type="search" ng-model="search" />
+		</div>
+		
 		<div ng-controller="List">
 			<ul>
-				<li ng-repeat="name in names">{{name}}</li>
+				<li ng-repeat="person in people | filter:search">
+					{{person.name}} : {{person.age}}
+				</li>
 			</ul>
 		</div>
 		
 		<script>
 			var List = function($scope){
-				$scope.names = ['Tom','Jeffrey','Dan', 'David'];
+				$scope.people = [
+					{name: 'Tom', age: 20},
+					{name: 'Bogdan', age: 34},
+					{name: 'Damian', age: 40},
+					{name: 'David', age: 22},
+					{name: 'Peter', age: 36}
+				];
 			};
 		</script>
 		
