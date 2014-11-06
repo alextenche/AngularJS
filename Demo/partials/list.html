@@ -1,8 +1,8 @@
 <section class="artistpage">
   <div class="search">
-    <h1>Artist Directory</h1>
+    <h1>Movies Directory</h1>
     <label>search: </label>
-    <input ng-model="query" placeholder="Search for artists" autofocus>
+    <input ng-model="query" placeholder="Search for movies" autofocus>
 
     <label class="formgroup">by:
       <select ng-model="artistOrder">
@@ -21,7 +21,7 @@
     </label>
    
   </div>
-  <ul class="artistlist" ng-show="query">
+  <ul class="artistlist">
     <li ng-animate="'animate'" class="artist cf" ng-repeat="item in artists | filter: query | orderBy: artistOrder:direction">
       <a href="#/details/{{artists.indexOf(item)}}">
         <img ng-src="images/{{item.shortname}}_tn.jpg" alt="Photo of {{item.name}}">
