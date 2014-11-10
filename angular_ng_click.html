@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
-		<title>Angular - ng-repeat</title>
+		<title>Angular - ng-click</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
 	</head>
 	
@@ -18,6 +18,10 @@
 				color: #222;
 				margin: 5em;
 			}
+			
+			.first-true{
+				background-color: red;
+			}
 		</style>
 		
 		<div>
@@ -28,14 +32,21 @@
 			<ul>
 				<li ng-repeat="person in people | filter:search">
 					{{person.name}} : {{person.age}}
+					<button ng-click="remove($index)" class="first-{{$first}}">X</button>
+					<span ng-show="$first">First!</span>
+					<span ng-show="$last">Last!</span>
+					<span ng-show="$middle">Middle!</span>
 				</li>
 			</ul>
+			
+			<span>There are {{people.length}} in the list</span>
 			
 			<div>
 				<label>Name:</label><input ng-model="new_name" />
 				<br>
-				<label>Age:</label><input type="">
-			
+				<label>Age:</label><input type="number" ng-model="new_age">
+				<br>
+				<button ng-click="add()">Add</button>
 			</div>
 		</div>
 		
@@ -48,6 +59,19 @@
 					{name: 'David', age: 22},
 					{name: 'Peter', age: 36}
 				];
+			
+				$scope.add = function(){
+					$scope.people.push({
+						name: $scope.new_name,
+						age: $scope.new_age
+					});
+					$scope.new_name = "";
+					$scope.new_age = "";
+				};
+				
+				$scope.remove = function(index){
+					$scope.people.splice(index,1);
+				}
 			};
 		</script>
 		
