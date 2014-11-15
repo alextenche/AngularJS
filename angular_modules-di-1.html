@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Angular - Dependency Injection 1</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+	</head>
+	
+	<body>
+		<style>
+			*{ box-sizing: border-box; }
+			body{ font: 14px/1.5 sans-serif; color: #222; margin: 3em;}
+		</style>
+			
+		<div ng-controller="Example">
+			{{name}}
+		</div>
+		
+		<script>
+			angular.module('myApp', [])
+			.controller("Example", ['$scope', function(s){
+				s.name = "Blade";
+			}]);
+			
+		</script>
+		
+	</body>
+</html>

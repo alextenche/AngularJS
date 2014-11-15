@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="contacts">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Contacts</title>
+		
+	</head>
+	
+	<body>
+		<style>
+			*{ box-sizing: border-box; }
+			body{ font: 14px/1.5 sans-serif; color: #222; margin: 3em;}
+		</style>
+			
+		<div ng-controller="Contacts">
+			<h1>Contacts</h1>
+			<div ng-view></div>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+		<script src="contacts.js"></script>
+	</body>
+</html>
