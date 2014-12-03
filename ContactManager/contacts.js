@@ -8,6 +8,16 @@ angular
 				templateUrl: 'edit.html',
 				controller: 'Edit'
 			})
+			.when('/add', {
+				// add contact
+				templateUrl: 'edit.html',
+				controller: 'Add'
+			})
+			.when('/delete/:index', {
+				// delete contact
+				templateUrl: 'edit.html',
+				controller: 'Delete'
+			})
 			.when('/', {
 				// list all contacts
 				templateUrl: 'list.html'
@@ -26,4 +36,16 @@ angular
 		// load in a contact from the route (/contact/:index)
 		$scope.contact =$scope.contacts[$routeParams.index];
 		$scope.index = $routeParams.index;
+	})
+	.controller('Add', function($scope, $routeParams){
+		var length = $scope.contacts.push({
+			name : 'New Contact',
+			number: ''			
+		});
+		$scope.contact = $scope.contacts[length - 1];
+		$scope.index = length - 1;
+	})
+	.controller('Delete', function($scope, $routeParams, $location){
+		$scope.contacts.splice($routeParams.index, 1);
+		$location.path('/').replace();
 	});
