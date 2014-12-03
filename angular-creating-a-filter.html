@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="myApp">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
@@ -12,36 +12,23 @@
 	
 	<body>
 		<div ng-controller="Filter">
-			<ul>
-				<li>{{price | currency:'@'}}</li>
-				<li>{{amount | number:2}}</li>
-				<li>{{message | uppercase}}</li>
-				<li>{{message | lowercase}}</li>
-				<li>{{date | date}}</li>
-				<li>{{date | date:'dd MM yyyy'}}</li>
-			</ul>
-			<ul>
-				<li ng-repeat="name in names | limitTo:3">{{name}}</li>
-			</ul>
-			<ul>
-				<li ng-repeat="person in people | orderBy:'firstname'">{{person.firstname}} {{person.lastname}}</li>
-			</ul>
+			<p>{{text | clean:''}}</p>
 		</div>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
 		<script>
-			var Filter = function($scope){
-				$scope.price = 11.50;
-				$scope.amount = 10.123456789;
-				$scope.message = 'Hello world!';
-				$scope.date = new Date();
-				$scope.names = ["Tom","Laura","Zoe","Jeffrey", "Joe"];
-				$scope.people = [
-					{firstname: 'Tom', lastname: 'Ashworth'},
-					{firstname: 'Jeffrey', lastname: 'Way'},
-					{firstname: 'Ken', lastname: 'Block'}
-				];
-			};
+			angular.module('myApp',[])
+			.filter('clean', function(){
+				return function(input, separator){
+					var filter = new RegExp('[^a-z0-9' + (separator || '-') + ']', 'ig')
+					return input.toLowerCase()
+								.replace(/\s+/g, (separator || '-'))
+								.replace(filter, '');
+				};
+			})
+			.controller('Filter', function($scope){
+				$scope.text = "Hello world, this is some text!";
+			});
 		</script>
 		
 	</body>

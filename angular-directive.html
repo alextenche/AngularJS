@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Angular - filter</title>
+		<style>
+			*{ box-sizing: border-box;}
+			body{ font: 14px/1.5 sans-serif; color: #222;margin: 3em;}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+	</head>
+	
+	<body>
+		<div ng-controller="Example">
+			<my-clicker on-click="handler()">{{message}}</my-clicker>
+		</div>
+		
+		<script>
+			angular.module('myApp',[])
+			.directive('myClicker',function (){
+				return {
+					restrict: 'E',
+					replace: true,
+					transclude: true,
+					template: '<button ng-transclude></button>',
+					link: function(scope, element, attrs){
+						console.log(attrs);
+						element.bind('click', function(){
+							scope.$eval(attrs.onClick);
+						});
+					}
+				};
+			})
+			.controller('Example', function($scope){
+				$scope.message = "Hello!";
+				$scope.click =  function(){
+					alert($scope.message);
+				}
+			});
+		</script>
+		
+	</body>
+</html>
