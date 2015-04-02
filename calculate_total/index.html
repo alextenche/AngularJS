@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="myA">
+    <head>
+        <meta charset="utf-8">
+        <title>PSIHOTEST: M.B.T.I.</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/5.4.7/css/foundation.css">
+
+    </head>
+    <body ng-controller="AlexController">
+
+        First Name: <input type="text" ng-model="person.firstName"><br>
+        Last Name: <input type="text" ng-model="person.lastName"><br>
+        <br>
+        Full Name: {{fullName()}}
+
+        <br>
+
+            <table>
+
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+
+                <tr ng-repeat="product in listProducts">
+                    <td>{{product.name}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.price}}</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>Total: {{ summary.price }}</td>
+                    <td></td> // Here is the total value of my cart
+                </tr>
+
+            </table>         
+
+        
+        <script type="text/javascript" src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
+        <script>
+            function AlexController($scope) {
+                $scope.person = {
+                    firstName: "John",
+                    lastName: "Doe",
+                };
+
+                $scope.fullName = function() {
+                    var x = $scope.person;  
+                    return x.firstName + " " + x.lastName;
+                };
+            }
+        </script>
+
+
+        
+    </body>
+</html>
