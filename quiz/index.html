@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AngularJS - Table</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>AngularJS - Table</h1>				
+		<div ng-app="myApp">
+	  		<div ng-controller="myController">
+	    		<table class="table">
+	      			<tr>
+	        			<th>first name</th>
+	        			<th>last name</th>
+	        			<th>birth date</th>
+	        			<th>age</th>
+	        			<th>products</th>
+	        			<th>salary</th>
+	      			</tr>
+	      			<tr ng-repeat="worker in data.workers">
+	        			<td>{{worker.firstName}}</td>
+	        			<td>{{worker.lastName}}</td>
+	        			<td>{{worker.birthDate}}</td>
+	        			<td>{{worker.age}}</td>
+	        			<td><input type="number" ng-model="worker.products"></td>
+	        			<td>{{worker.basicSalary}}</td>
+	      			</tr>
+	      			<tr>
+	      				<th></th>
+	        			<th>TOTALS</th>
+	        			<th></th>
+	        			<th></th>
+	        			<th>{{ sumProducts }}</th>
+	        			<th>{{ sumSalary }}</th>
+	      			</tr>
+	    		</table>
+	    		Sum of ages(ye, weird!): {{}}<br>
+	    		Basic Salary: <input type="text" ng-model="basicSalary">
+	   			sum salary: <label ng-model="sumSalary" ng-click="alertHi()">{{sumSalary}} </label>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>
+
+
