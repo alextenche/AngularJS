@@ -22,7 +22,7 @@ app.controller('MainController', ['$scope', function($scope){
     name: 'Dune', 
     price: 15, 
     pubdate: new Date('2013', '08', '01'), 
-    cover: 'img/program-or-be-programmed.jpg',
+    cover: 'img/dune.jpg',
     likes: 0,
     dislikes: 0
   },
@@ -30,10 +30,19 @@ app.controller('MainController', ['$scope', function($scope){
     name: 'Foundation', 
     price: 12, 
     pubdate: new Date('2013', '08', '01'), 
-    cover: 'img/program-or-be-programmed.jpg',
+    cover: 'img/foundation.jpg',
     likes: 0,
     dislikes: 0
-  }];
+  },
+  { 
+    name: "Ender's Game", 
+    price: 12, 
+    pubdate: new Date('2013', '08', '01'), 
+    cover: 'img/enders_game.jpg',
+    likes: 0,
+    dislikes: 0
+  }
+  ];
   $scope.plusOne = function(index){
   	$scope.products[index].likes += 1;
   }
