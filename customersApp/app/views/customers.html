@@ -10,10 +10,10 @@ Filter: <input type="text" ng-model="customerFilter.name">
 		<th>&nbsp;</th>
 	</tr>
 	<tr ng-repeat="cust in customers | filter:customerFilter | orderBy:sortBy:reverse">
-		<td>{{ cust.name | uppercase}}</td>
-		<td>{{ cust.city}}</td>
-		<td>{{ cust.orderTotal | currency:'lei '}}</td>
-		<td>{{ cust.joined | date:'longDate'}}</td>
+		<td>{{ cust.name | uppercase }}</td>
+		<td>{{ cust.city }}</td>
+		<td>{{ cust.orderTotal | currency }}</td>
+		<td>{{ cust.joined | date:'longDate' }}</td>
 		<td><a href="#/orders/{{ cust.id }}">View Orders</a></td>
 	</tr>
 </table>
