@@ -22,24 +22,24 @@
                 <div class="row">
 
                     <div class="col-md-3" class="series_img">
-                        <img ng-src="{{ program.series_img }}">
-                    </div>
+                <img ng-src="{{ program.series_img }}">
+            </div>
+            
+            <div class="col-md-6">
+              <h1 class="series">{{ program.series }}</h1>
+              <h2 class="episode">{{ program.episode }}</h2>
+              <p class="description">{{ program.description }}</p>
+            </div>
 
-        <div class="col-md-6">
-            <h1 class="series">{{ program.series }}</h1>
-            <h2 class="episode">{{ program.episode }}</h2>
-            <p class="description">{{ program.description }}</p>
-        </div>
-
-        <div class="col-md-3">
-            <ul class="list-group">
-              <li class="list-group-item"><span>Date:</span> {{ }} </li>
-              <li class="list-group-item"><span>On air:</span> {{  }} </li>
-              <li class="list-group-item"><span>Time:</span> {{ program.datetime }} </li>
-              <li class="list-group-item"><span>Season:</span> {{ program.season }}  </li>
-              <li class="list-group-item"><span>Genre:</span> {{ program.genre }} </li>
-          </ul>
-      </div>
+            <div class="col-md-3">
+              <ul class="list-group">
+                <li class="list-group-item"><span>Date:</span> {{ program.datetime | date:'mediumDate' }} </li>
+                <li class="list-group-item"><span>On air:</span> {{ program.datetime | date:'EEEE' }} </li>
+                <li class="list-group-item"><span>Time:</span> {{ program.datetime | date:'h:mm a' }} </li>
+                <li class="list-group-item"><span>Season:</span> {{ program.season }}  </li>
+                <li class="list-group-item"><span>Genre:</span> {{ program.genre }} </li>
+              </ul>
+            </div>
 
   </div>
 </div>
