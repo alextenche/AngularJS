@@ -18,7 +18,17 @@ app.directive('installApp', function() {
     			scope.buttonText = "Uninstall";
     			scope.installed = true;
     		}
-    	}
+    	};
+
+        scope.insert = function(){
+            console.log('insert node');
+            scope.apps.push({ 
+        icon: 'img/move.jpg',
+        title: 'MOVE',
+        developer: 'MOVE, Inc.',
+        price: 0.99
+    });
+        }
     }
   }; 
 });
