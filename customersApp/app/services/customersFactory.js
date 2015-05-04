@@ -1,4 +1,5 @@
 (function(){
+	
 	var customerFactory = function(){
 		var customers = [
 			{
@@ -72,11 +73,13 @@
 
 		// search the customers for the customerId
 		factory.getCustomer = function(customerId){
+			// search for customer and return it
 			for(var i = 0, len = customers.length; i < len; i++){
 				if(customers[i].id === parseInt(customerId)){
 					return customers[i];
 				} 
 			}
+			// if no customer found return empty object
 			return {};
 		}
 

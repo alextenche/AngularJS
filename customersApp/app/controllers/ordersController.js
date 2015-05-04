@@ -4,7 +4,7 @@
 	var OrdersController = function($scope, $routeParams, customersFactory){
 
 		var customerId = $routeParams.customerId;
-		$scope.customer = null;
+		$scope.orders = null;
 
 		function init(){
 			// search the customers for the customerId
