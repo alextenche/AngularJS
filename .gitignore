@@ -1,3 +1,7 @@
+contactsApp/bower_components/*
+contactsApp/node_modules/*
+contactsApp/public/lib/*
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
