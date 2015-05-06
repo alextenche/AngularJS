@@ -1,4 +1,3 @@
-
 (function(){
 
 	var OrdersController = function($scope, $routeParams, customersFactory){
@@ -7,8 +6,13 @@
 		$scope.orders = null;
 
 		function init(){
-			// search the customers for the customerId
-			$scope.customer = customersFactory.getCustomer(customerId);
+			customersFactory.getCustomer(customerId)
+				.success( function(customer) {
+					$scope.customer = customer;
+				})
+				.error(function(data, status, headers, config){
+					// handle error
+				});
 		}
 			
 		init();		 		
