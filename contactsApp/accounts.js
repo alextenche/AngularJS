@@ -61,6 +61,19 @@ router
 			});
 		}
 		next();
+	})
+	.get('/options/displayed_field', function (req, res){
+		if (!req.user){
+			res.json([]); 
+		} else {
+			res.json(req.user.options.displayed_field || []);
+		}
+	})
+	.post('/options/displayed_field', function (req, res){
+		req.user.options.displayed_field = req.body.fields;
+		db.update({ id: req.user.id}, req.user, function (err, data){
+			res.json(data[0].options.displayed_field);
+		});
 	});
 
 module.exports = router;
