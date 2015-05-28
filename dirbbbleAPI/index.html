@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dribble">
+<head>
+  <meta charset="utf-8">
+  <title> DribbleAPI </title>
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body ng-controller="AppCtrl">
+  <div class="container">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#/"> DribbleAPI </a>
+        <ul class="nav">
+        </ul>
+      </div>
+    </div>
+    
+    <div ng-controller="ShotsListCtrl">
+      <ul class="thumbnails">
+        <li class="shot span3" ng-repeat="shot in list.shots">
+          <div class="thumbnail">
+            <a href="#/shots/{{ shot.id }}">
+              <img ng-src="{{ shot.image_url }}">    
+            </a>
+            <strong class="title">{{ shot.title }}</strong>
+
+            <a class="player" href="#/players/{{ shot.player.username }}">
+              {{ shot.player.name }}
+            </a>
+          
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <script src="lib/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>
