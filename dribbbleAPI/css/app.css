@@ -9,7 +9,6 @@
   text-overflow: ellipsis;
 }
 
-
 .stats {
   background: #CCC;
   opacity: 0.5;
@@ -44,4 +43,16 @@
 .comment img {
   height: 60px;
   width: 60px;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+}
+
+footer {
+  text-decoration: none;
+  color: #fff;  
+  text-align:  center;
 }
