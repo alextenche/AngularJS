@@ -1,6 +1,7 @@
 var express    = require('express'),
 	bodyParser = require('body-parser'),
 	session    = require('express-session'),
+	path       = require('path'),
 	Bourne     = require('bourne'),
 	crypto     = require('crypto');
 
@@ -54,7 +55,7 @@ router
 		req.session.userId = null;
 		res.redirect('/');
 	})
-	.use( function(req, res, next ){
+	.use( function (req, res, next){
 		if(req.session.userId){
 			db.findOne({ id: req.session.userId }, function (err, data){
 				req.user = data;

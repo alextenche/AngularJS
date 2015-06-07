@@ -19,7 +19,6 @@ angular.module('ContactsApp', ['ngRoute', 'ngResource', 'ngMessages'])
 			})
 			.otherwise({
 				redirectTo: '/contacts'
-
 			});
 		$locationProvider.html5Mode(true);
 	})

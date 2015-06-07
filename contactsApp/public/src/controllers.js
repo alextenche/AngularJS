@@ -31,14 +31,14 @@ angular.module('ContactsApp')
 
 		$scope.save = function(){
 			if($scope.newContact.$invalid){
-				$scope.$broadcast('record: invalid');
+				$scope.$broadcast('record:invalid');
 			} else {
 				$scope.contact.$save();
 				$location.url('/contacts');
 			}
 		};
 	})
-	.controller('SingleController', function($scope, $rootScope, $location, Contact, $routeParams){
+	.controller('SingleController', function ($scope, $rootScope, $location, Contact, $routeParams){
 		$rootScope.PAGE = "single";
 		$scope.contact = Contact.get({ id: parseInt($routeParams.id, 10) });
 		$scope.delete = function(){
@@ -46,7 +46,7 @@ angular.module('ContactsApp')
 			$location.url('/contacts');
 		};
 	})
-	.controller('SettingsController', function($scope, $rootScope, options, Fields){
+	.controller('SettingsController', function ($scope, $rootScope, options, Fields){
 		$rootScope.PAGE = 'settings';
 
 		$scope.allFields = [];

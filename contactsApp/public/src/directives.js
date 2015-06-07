@@ -24,7 +24,7 @@ angular.module('ContactsApp')
 				required: '@'
 			},
 			link: function ($scope, element, attr) {
-				$scope.$on('record:invalid', function(){
+				$scope.$on('record:invalid', function (){
 					$scope[$scope.field].$setDirty();
 				});
 
@@ -35,16 +35,16 @@ angular.module('ContactsApp')
 					$scope.blurUpdate();
 				};
 
-				$scope.blurUpdate = function(){
+				$scope.blurUpdate = function (){
 					if($scope.live !== 'false'){
-						$scope.record.$update(function(updatedRecord){
+						$scope.record.$update(function (updatedRecord){
 							$scope.record = updatedRecord;
 						});
 					}
 				};
 
 				var saveTimeout;
-				$scope.update = function(){
+				$scope.update = function (){
 					$timeout.cancel(saveTimeout);
 					saveTimeout = $timeout($scope.blurUpdate, 1000);
 				};
@@ -52,7 +52,7 @@ angular.module('ContactsApp')
 			}
 		};
 	})
-	.directive('newField', function($filter, FieldTypes){
+	.directive('newField', function ($filter, FieldTypes){
 		return{
 			restrict: 'EA',
 			templateUrl: 'views/newField.html',
@@ -62,7 +62,7 @@ angular.module('ContactsApp')
 				live: '@'
 			},
 			require: '^form',
-			link: function($scope, element, attr, form){
+			link: function ($scope, element, attr, form){
 				$scope.types = FieldTypes;
 				$scope.field = {};
 
@@ -81,7 +81,7 @@ angular.module('ContactsApp')
 						$scope.record[$filter('camelCase')($scope.field.name)] = [$scope.field.value, $scope.field.type];
 						$scope.remove();
 						if($scope.live !== 'false'){
-							$scope.record.$update(function(updatedRecord){
+							$scope.record.$update(function (updatedRecord){
 								$scope.record = updatedRecord;
 							});
 						}
