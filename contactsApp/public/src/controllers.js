@@ -16,7 +16,7 @@ angular.module('ContactsApp')
 			$location.url('/contact/' + id);
 		};
 	})
-	.controller('NewController', function($scope, $rootScope, Contact, $location){
+	.controller('NewController', function ($scope, $rootScope, Contact, $location){
 		$rootScope.PAGE = "new";
 		$scope.contact = new Contact({
 			firstName: ['', 'text'],
@@ -52,15 +52,15 @@ angular.module('ContactsApp')
 		$scope.allFields = [];
 		$scope.fields = options.displayed_fields;
 
-		Fields.headers().then(function(data){
+		Fields.headers().then(function (data){
 			$scope.allFields = data;
 		});
 
 		$scope.toggle = function (field){
 			var i = options.displayed_fields.indexOf(field);
 
-			if(i>-1){
-				options.displayed_fields.splice(i,1);
+			if(i > -1){
+				options.displayed_fields.splice(i, 1);
 			} else {
 				options.displayed_fields.push(field);
 			}

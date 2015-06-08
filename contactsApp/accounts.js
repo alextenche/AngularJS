@@ -72,7 +72,7 @@ router
 	})
 	.post('/options/displayed_field', function (req, res){
 		req.user.options.displayed_field = req.body.fields;
-		db.update({ id: req.user.id}, req.user, function (err, data){
+		db.update({ id: req.user.id }, req.user, function (err, data){
 			res.json(data[0].options.displayed_field);
 		});
 	});
