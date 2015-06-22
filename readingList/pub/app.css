@@ -1,0 +1,11 @@
+.book > aside {
+	text-align: center;
+}
+
+.book cite {
+	font-style: italic;
+}
+
+.book .thumbnail .full{
+	min-width: 75px;
+}
