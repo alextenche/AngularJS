@@ -3,55 +3,50 @@ angularFormsApp.controller('efController',
     ["$scope", "$window", "$routeParams", "DataService",
     function efController($scope, $window, $routeParams, DataService) {
 
-	    if($routeParams.id){
-		    $scope.employee = DataService.getEmployee($routeParams.id);
-	    } else {
-		    $scope.employee = { id: 0 };
-	    }
+        if ($routeParams.id)
+            $scope.employee = DataService.getEmployee($routeParams.id);
+        else
+            $scope.employee = { id: 0 };
 
-	    //$scope.master = {};
+        $scope.editableEmployee = angular.copy($scope.employee);
 
-	    $scope.editableEmployee = angular.copy($scope.employee);
+        $scope.departments = [
+            "Engineering",
+            "Marketing",
+            "Finance",
+            "Administration"
+        ];
 
-	    $scope.departments = [
-		    "Engineering",
-		    "Marketing",
-		    "Finance",
-		    "Administration"
-	    ];
+        $scope.shouldShowFullName = function () {
+            return true;
+        };
 
-	    $scope.programmingLanguages = [
-		    "C",
-		    "C++",
-		    "C#",
-		    "JavaScript",
-		    "Java",
-		    "Pascal",
-		    "Perl",
-		    "PHP"
-	    ];
+        $scope.submitForm = function () {
 
-	    $scope.shouldShowFullName = function (){
-		    return true;
-	    }
+            $scope.$broadcast('show-errors-event');
 
-	    $scope.hoveringOver = function( value ){
-		    $scope.overStar = value;
-		    $scope.percent = 100 * (value / 10);
-	    };
+            if ($scope.employeeForm.$invalid)
+                return;
 
 
-	    $scope.submitForm = function () {
-
-		    $scope.$broadcast('show-errors-event');
-
-		    if($scope.employeeForm.$invalid){
-			    return;
-		    }
-
-		    if( $scope.editableEmployee.id == 0 ){
-			    // insert new employee
-		        DataService.insertEmployee($scope.editableEmployee).then(
+            if ($scope.editableEmployee.id == 0) {
+                // insert new employee
+                DataService.insertEmployee($scope.editableEmployee).then(
+                    function (results) {
+                        // on success
+                        $scope.employee = angular.copy($scope.editableEmployee);
+                        $scope.employee.id = results.data;
+                        $window.history.back();
+                    },
+                    function (results) {
+                        // on error
+                        $scope.hasFormError = true;
+                        $scope.formErrors = results.statusText;
+                    });
+            }
+            else {
+                // update the employee
+                DataService.updateEmployee($scope.editableEmployee).then(
                     function (results) {
                         // on success
                         $scope.employee = angular.copy($scope.editableEmployee);
@@ -59,25 +54,20 @@ angularFormsApp.controller('efController',
                     },
                     function (results) {
                         // on error
-                        alert(results);
+                        $scope.hasFormError = true;
+                        $scope.formErrors = results.statusText;
                     });
-		    } else {
-			    // update the employee
-			    DataService.updateEmployee( $scope.editableEmployee );
-		    }
-			
-	    };
+            }
 
-		
-	    $scope.cancelForm = function () {
-		    $window.history.back();
-	    };
+            
+        };
 
-	    $scope.resetForm = function(){
-		    $scope.$broadcast('hide-errors-event');
-		    $scope.editableEmployee = angular.copy( $scope.master );
-		    $scope.employee = angular.copy( $scope.master );
-		
-	    };
+        $scope.cancelForm = function () {
+            $window.history.back();
+        };
 
-}]);
+        $scope.resetForm = function () {
+            $scope.$broadcast('hide-errors-event');
+        }
+
+    }]);

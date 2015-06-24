@@ -1,4 +1,4 @@
-<form class="form-horizontal" name="employeeForm" novalidate role="form">
+﻿<form class="form-horizontal" name="employeeForm" novalidate role="form">
 
     <fieldset>
         <legend>Basic Information</legend>
@@ -7,21 +7,9 @@
             <div class="col-sm-9">
                 <input type="text" id="fullName" name="fullName" class="form-control"
                        ng-model="editableEmployee.fullName" ng-required="true"
-                       ng-pattern="/^A/" />
-                <span class="help-block"
+                       />
+                <span class="help-block" 
                       ng-if="employeeForm.fullName.$error.required">Full Name is required</span>
-                <span class="help-block"
-                      ng-if="employeeForm.fullName.$error.pattern">Full Name must start with A</span>
-            </div>
-        </div>
-
-        <div class="form-group" show-errors>
-            <label for="email" class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-9">
-                <input type="email" id="email" name="email" class="form-control"
-                       ng-model="editableEmployee.email" ng-required="true" />
-                <span class="help-block"
-                      ng-if="employeeForm.email.$error">A valid email is required</span>
             </div>
         </div>
 
@@ -45,7 +33,7 @@
     </fieldset>
     <br />
 
-
+    
 
     <fieldset>
         <legend>Payroll Type</legend>
@@ -85,6 +73,7 @@
                ng-click="submitForm()" />
         <input type="reset" class="btn btn-warning" value="Reset"
                ng-click="resetForm()" />
+        <div class="alert alert-danger" ng-if="hasFormError">{{formErrors}}</div>
     </div>
 
 </form>
