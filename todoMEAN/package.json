@@ -1,0 +1,20 @@
+{
+  "name": "todo_mean",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Tenche",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "1.4.4",
+    "express": "^4.14.0",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "angular": "^1.4.4",
+    "express": "^4.14.0"
+  }
+}
