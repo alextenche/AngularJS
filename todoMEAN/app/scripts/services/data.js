@@ -4,6 +4,7 @@ var angular = require('angular');
 
 angular.module('todoListApp')
 .service('dataService', function($http){
+
 	this.helloConsole = function(){
 		console.log("service working !");
 	};

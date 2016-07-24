@@ -12,9 +12,15 @@ angular.module('todoListApp')
 	};
 
 	dataService.getTodos(function(response){
-		console.log(response.data);
 		$scope.todos = response.data.todos;
 	});
+
+	$scope.addTodo = function(){
+		var todo = {name: 'this is a new todo'};
+		$scope.todos.unshift(todo);
+	};
+
+
 
 	$scope.deleteTodo = function(todo, $index){
 		dataService.deleteTodo(todo);
@@ -30,8 +36,4 @@ angular.module('todoListApp')
 		dataService.saveTodos(filteredTodos);
 	};
 
-	$scope.addTodo = function(){
-		var todo = {name: 'this is a new todo'};
-		$scope.todos.unshift(todo);
-	};
 })
