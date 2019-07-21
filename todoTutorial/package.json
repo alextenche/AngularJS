@@ -9,6 +9,6 @@
   "author": "Alex Tenche",
   "license": "ISC",
   "devDependencies": {
-    "angular": "1.4.4"
+    "angular": ">=1.6.0"
   }
 }
